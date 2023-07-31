@@ -1,54 +1,91 @@
-# Host Static Website with Vagrant
+# Vagrant Static Website Project
 
-Vagrant is a VM Automation tool which uses hypervisor to manange VMs on local setup. A form of Infrastructure as Code (IaC). 
-Vagrant enables users to create and configure lightweight, reproducible, and portable development environments.
+Welcome to the Vagrant Static Website project! This repository contains the necessary files and configurations to set up a local development environment for a static website using Vagrant.
 
-Following is a simple Automated way to host a static website in a Local Environment Using Vagrant.
+## Overview
+
+The purpose of this project is to provide a convenient and isolated development environment for working on static websites. Vagrant allows you to create and manage a consistent development environment across different operating systems, ensuring that all team members work in the same environment with the same dependencies.
+
+## Prerequisites
+
+Before you start, make sure you have the following software installed on your system:
+
+1. [Vagrant](https://www.vagrantup.com/): Vagrant is a tool that allows you to create and configure lightweight, reproducible, and portable virtual environments. By utilizing Vagrant, developers can work in a consistent and isolated environment, ensuring that the development and testing process remains predictable and streamlined.
+2. [VirtualBox](https://www.virtualbox.org/) (or another supported provider): A virtualization provider, Vagrant supports various providers like VirtualBox, VMware, and Hyper-V. You must have one of these virtualization providers installed on your system.
+
+## Getting Started
+
+Follow these steps to set up the development environment:
+
+1. Clone this repository to your local machine:
+
+```bash
+git clone https://github.com/Kartikdudeja/static-website_vagrant.git
+```
 
 <br/>
 
-## Prerequisites:
-* Oracle VM VirtualBox
-* Vagrant
+2. Customize the website content:  
+`deploy-static-website.sh`: Script has the code the setup the web service and bring up the static website.  
+To Change the Website Template, just replace the URL defined for the variable 'WEBSITE_URL'.
 
 <br/>
 
-## Brief about files in this Repository:
-* 'Vagrantfile: Vagrantfile describes the Machine required for this Project also during provisioning it will execute the Bash Script to deploy the Static Website.
-* 'deploy-static-website.sh': Script has the code the setup the web service and bring up the static website.
-
-> Incase you wish to modify the Static Website, just replace the link for the variable 'WEBSITE_URL' with your custom link in the shell script
+3. Configure Vagrant:  
+`Vagrantfile`: Vagrantfile describes the Machine required for this Project also during provisioning it will execute the Bash Script to deploy the Static Website.  
+Open the `Vagrantfile` and review the configuration settings. Adjust them according to your requirements. You can set the amount of RAM, the number of CPU cores, and networking settings as needed.
 
 <br/>
 
-## Bring up the Website:
+4. Provision the Vagrant box:
 
-Clone the Repository and ensure all Prerequisites are installed on your local machine
-
-Run the following Command to bring up the Vagrant VM
-``` bash
+```bash
 vagrant up
 ```
 
-Once VM is up, wait for 5-10 minutes and then you can visit the following URL to view the website
-```
-http://192.168.20.20/
-```
-
-> If you observe any IP conflicts with this value, you can change the IP in the 'Vagrantfile', you will have to destroy the current VM and create a new one for this change to take place.  
+Vagrant will download the base box and provision the virtual machine based on the settings in the `Vagrantfile`.
 
 <br/>
 
-### Check Script logs, Post Completion
+5. Access the website:  
+Once the provisioning process is complete, you can access the static website locally by visiting `http://192.168.20.20/` in your web browser.
 
-You can also check script logs to ensure that everything worked fine, script logs are located at '/tmp/script.log'. To Check logs, you can use the following commands:
+<br/>
 
-1. Login to the Virtual Machine
-``` bash
-vagrant ssh
+6. Shutdown the Vagrant box:
+
+```bash
+vagrant halt
 ```
 
-2. Read Logs
-``` bash
-less /tmp/script.log
-```
+<br/>
+
+7. Troublehooting:  
+If you encounter any issues you can check the script logs to ensure that everything worked fine, script logs are located at '/tmp/script.log'. To Check logs, you can use the following commands:
+  
+  * Login to the Virtual Machine
+  ``` bash
+  vagrant ssh
+  ```
+  
+  * Read Logs
+  ``` bash
+  less /tmp/script.log
+  ```
+
+## Useful Vagrant Commands
+
+Here are some useful Vagrant commands for managing the virtual machine:
+
+- `vagrant up`: Create and provision the Vagrant box.
+- `vagrant halt`: Shut down the Vagrant box.
+- `vagrant reload`: Restart the Vagrant box.
+- `vagrant destroy`: Delete the Vagrant box (Note: This will remove all data inside the virtual machine).
+
+## Conclusion
+
+You now have a local development environment for your static website using Vagrant. Happy coding!
+
+If you encounter any issues or have any questions, please feel free to open an issue on the [GitHub repository](https://github.com/Kartikdudeja/static-website_vagrant.git).
+
+
